@@ -1,0 +1,173 @@
+.draggable-list {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+.draggable-list .wrapper{
+    display: flex;
+}
+.draggable-list .wrapper>span {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.draggable-list .item {
+    position: relative;
+    width: 110px;
+    height: 110px;
+    margin-top: 10px;
+    margin-right: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #dddddd;
+}
+
+.draggable-list .delete-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 16px;
+    height: 16px;
+    background: red;
+    line-height: 16px;
+    font-size: 16px;
+    color: #ffffff;
+    display: none;
+}
+
+.draggable-list .item:hover .delete-btn {
+    display: block;
+}
+
+.draggable-list .item img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.draggable-list .img-select {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px dashed #dddddd;
+    font-size: 30px;
+}
+
+.draggable-list .img-select i {
+    color: #409eff;
+}
+/* 编译器 */
+.edit_container {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    line-height: 20px;
+    color: #2c3e50;
+    height: auto !important;
+}
+.ql-editor {
+  height: 400px;
+}
+.tips {
+  color: #ccc;
+  width: 100%;
+}
+/* 自定义diy样式 */
+.diy-phone-container .phone-top {
+  padding: 0 20px;
+  border-radius: 18px 18px 0 0;
+}
+.diy-phone-container .phone-top .status-bar {
+  height: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.diy-phone-container .phone-top .svg-icon {
+  width: 20px;
+  height: 20px;
+  color: #333333;
+}
+.diy-phone-container .phone-top .navigation {
+  height: 44px;
+  line-height: 44px;
+  text-align: center;
+  font-size: 18px;
+}
+.diy-phone-container .diy-phone-item > div {
+  position: relative;
+  border: 2px solid #f1f1f2;
+}
+.diy-phone-container .diy-phone-item > div:hover,
+.diy-phone-container .diy-phone-item.active > div {
+  border: 2px dashed #3a8ee6;
+}
+.diy-phone-container .diy-phone-item .btn-edit-del {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 10;
+}
+.diy-phone-container .diy-phone-item .btn-edit-del > div {
+  width: 32px;
+  height: 16px;
+  line-height: 16px;
+  display: inline-block;
+  text-align: center;
+  font-size: 10px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.4);
+  margin-left: 2px;
+  cursor: pointer;
+}
+.diy-phone-container img {
+  width: 100%;
+}
+.param-img-item {
+  position: relative;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #eeeeee;
+  line-height: 20px;
+}
+.param-img-item .delete-box {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #cccccc;
+}
+.param-img-item .delete-box:hover {
+  color: rgb(255, 51, 0);
+}
+.param-img-item .pic img {
+  width: 200px;
+  height: 100px;
+  margin: 0 auto;
+}
+.param-img-item .icon img {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+}
+.param-img-item .url-box {
+  display: flex;
+  justify-content: flex-start;
+  line-height: 40px;
+  margin-bottom: 12px;
+}
+.param-img-item .url-box .key-name {
+  display: block;
+  width: 72px;
+  height: var(--el-component-size-small);
+  line-height: var(--el-component-size-small);
+}
+.param-img-item .url-box .el-input {
+  height: 100%;
+}
