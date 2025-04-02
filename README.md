@@ -36,8 +36,6 @@
 
   **[https://www.jjjshop.net/](https://www.jjjshop.net/)** 
 
-【PHP版本】 [https://gitee.com/victor123/jjjshop-multi](https://gitee.com/victor123/jjjshop-multi)
-
  ### 如果对您有帮助，您可以点右上角 "Star" 支持一下，这样我们才有继续免费下去的动力，谢谢！
 QQ交流群 (入群前，请在网页右上角点 "Star" )
 
