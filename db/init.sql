@@ -23,11 +23,11 @@ SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `jjjshop_ad`;
 CREATE TABLE `jjjshop_ad`  (
                                `ad_id` int NOT NULL AUTO_INCREMENT COMMENT '主键ID',
-                               `title` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '广告名称',
+                               `title` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '广告名称',
                                `image_id` int NOT NULL COMMENT '图片id',
                                `sort` int NOT NULL DEFAULT 0 COMMENT '排序(越小越靠前)',
-                               `link_url` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '跳转链接',
-                               `name` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '链接名称',
+                               `link_url` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '跳转链接',
+                               `name` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '链接名称',
                                `category_id` int NOT NULL COMMENT 'banner类型id',
                                `app_id` int UNSIGNED NOT NULL DEFAULT 0 COMMENT '程序id',
                                `shop_supplier_id` int NOT NULL COMMENT '商户id',
@@ -35,7 +35,7 @@ CREATE TABLE `jjjshop_ad`  (
                                `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
                                `update_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
                                PRIMARY KEY (`ad_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = 'banner图' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'banner图' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of jjjshop_ad
@@ -52,7 +52,7 @@ CREATE TABLE `jjjshop_ad_category`  (
                                         `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
                                         `update_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
                                         PRIMARY KEY (`category_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = 'banner类型' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'banner类型' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of jjjshop_ad_category
@@ -226,18 +226,18 @@ INSERT INTO `jjjshop_category` VALUES (60, '苹果', 11, 10294, 100, 10001, 1590
 DROP TABLE IF EXISTS `jjjshop_center_menu`;
 CREATE TABLE `jjjshop_center_menu`  (
                                         `menu_id` int NOT NULL AUTO_INCREMENT COMMENT '主键ID',
-                                        `name` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '菜单名称',
-                                        `icon` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' COMMENT '图片url',
+                                        `name` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '菜单名称',
+                                        `icon` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '图片url',
                                         `sort` int NOT NULL DEFAULT 0 COMMENT '排序(越小越靠前)',
-                                        `path` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '跳转链接',
-                                        `path_name` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' COMMENT '链接名称',
-                                        `sys_tag` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' COMMENT '标签',
+                                        `path` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '跳转链接',
+                                        `path_name` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '链接名称',
+                                        `sys_tag` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '标签',
                                         `is_show` tinyint(1) NOT NULL DEFAULT 1 COMMENT '1显示0隐藏',
                                         `app_id` int UNSIGNED NOT NULL DEFAULT 0 COMMENT '程序id',
                                         `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
                                         `update_time` timestamp NULL DEFAULT NULL COMMENT '更新时间',
                                         PRIMARY KEY (`menu_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 22 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = 'banner图' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 22 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'banner图' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of jjjshop_center_menu
@@ -1040,7 +1040,7 @@ CREATE TABLE `jjjshop_product_comment`  (
                                             `describe_score` tinyint NULL DEFAULT 5 COMMENT '描述评分',
                                             `express_score` tinyint UNSIGNED NOT NULL DEFAULT 5 COMMENT '物流服务评分总分5分',
                                             `server_score` tinyint UNSIGNED NOT NULL DEFAULT 5 COMMENT '服务态度评分总分5分',
-                                            `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '评价内容',
+                                            `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '评价内容',
                                             `is_picture` tinyint UNSIGNED NOT NULL DEFAULT 0 COMMENT '是否为图片评价',
                                             `sort` tinyint UNSIGNED NOT NULL DEFAULT 0 COMMENT '评价排序',
                                             `status` tinyint UNSIGNED NOT NULL DEFAULT 0 COMMENT '评价状态(0=待审核 1=审核通过2=审核不通过)',
@@ -5278,7 +5278,7 @@ CREATE TABLE `jjjshop_shop_opt_log`  (
                                          `request_type` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '请求类型',
                                          `browser` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '浏览器',
                                          `agent` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '浏览器信息',
-                                         `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL COMMENT '操作内容',
+                                         `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '操作内容',
                                          `ip` varchar(128) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '登录ip',
                                          `app_id` int UNSIGNED NOT NULL DEFAULT 0 COMMENT '小程序id',
                                          `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '签到时间',
@@ -5685,21 +5685,21 @@ CREATE TABLE `jjjshop_supplier_account`  (
 DROP TABLE IF EXISTS `jjjshop_supplier_apply`;
 CREATE TABLE `jjjshop_supplier_apply`  (
                                            `supplier_apply_id` int NOT NULL AUTO_INCREMENT COMMENT 'id',
-                                           `user_name` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '姓名',
-                                           `password` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '' COMMENT '密码',
-                                           `store_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '店铺名称',
-                                           `mobile` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '手机号码',
+                                           `user_name` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '姓名',
+                                           `password` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '密码',
+                                           `store_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '店铺名称',
+                                           `mobile` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '手机号码',
                                            `business_id` int NOT NULL DEFAULT 0 COMMENT '营业执照',
                                            `status` tinyint(1) NOT NULL DEFAULT 0 COMMENT '0待审核1审核通过2未通过',
                                            `user_id` int NULL DEFAULT 0 COMMENT '会员id',
                                            `category_id` int NOT NULL COMMENT '主营分类id',
                                            `deposit_money` decimal(10, 2) NOT NULL DEFAULT 0.00 COMMENT '保证金',
-                                           `content` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '审核备注',
+                                           `content` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '审核备注',
                                            `app_id` int UNSIGNED NOT NULL DEFAULT 0 COMMENT '程序id',
                                            `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
                                            `update_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
                                            PRIMARY KEY (`supplier_apply_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '商户申请表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '商户申请表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of jjjshop_supplier_apply
@@ -5760,7 +5760,7 @@ CREATE TABLE `jjjshop_supplier_category`  (
                                               `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
                                               `update_time` timestamp NULL DEFAULT NULL COMMENT '更新时间',
                                               PRIMARY KEY (`category_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = 'banner类型' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = 'banner类型' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of jjjshop_supplier_category
@@ -5853,7 +5853,7 @@ CREATE TABLE `jjjshop_supplier_opt_log`  (
                                              `request_type` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '请求类型',
                                              `browser` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '浏览器',
                                              `agent` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '浏览器信息',
-                                             `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL COMMENT '操作内容',
+                                             `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '操作内容',
                                              `shop_supplier_id` int NOT NULL DEFAULT 0 COMMENT '商户id',
                                              `ip` varchar(128) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '登录ip',
                                              `app_id` int UNSIGNED NOT NULL DEFAULT 0 COMMENT '小程序id',
@@ -6113,7 +6113,7 @@ CREATE TABLE `jjjshop_user`  (
                                  `union_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '微信开放平台id',
                                  `app_user` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '苹果用户',
                                  `reg_source` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '注册来源',
-                                 `nickName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' COMMENT '微信昵称',
+                                 `nickName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '微信昵称',
                                  `mobile` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '手机号',
                                  `salt` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '盐值',
                                  `password` varchar(120) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT '密码',
@@ -6209,7 +6209,7 @@ CREATE TABLE `jjjshop_user_cart`  (
                                       `cart_id` int NOT NULL AUTO_INCREMENT COMMENT 'ID',
                                       `user_id` int UNSIGNED NOT NULL DEFAULT 0 COMMENT '用户id',
                                       `product_id` int NOT NULL COMMENT '商品',
-                                      `spec_sku_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' COMMENT '商品规格',
+                                      `spec_sku_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '商品规格',
                                       `total_num` int NOT NULL COMMENT '商品数量',
                                       `join_price` decimal(10, 2) NOT NULL DEFAULT 0.00 COMMENT '加入时价格',
                                       `shop_supplier_id` int NOT NULL DEFAULT 0 COMMENT '供应商id',
@@ -6217,7 +6217,7 @@ CREATE TABLE `jjjshop_user_cart`  (
                                       `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
                                       `update_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
                                       PRIMARY KEY (`cart_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '用户购物车' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '用户购物车' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of jjjshop_user_cart
@@ -6240,7 +6240,7 @@ CREATE TABLE `jjjshop_user_favorite`  (
                                           `update_time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
                                           `product_id` int NOT NULL COMMENT '商品',
                                           PRIMARY KEY (`favorite_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '我的收藏关注' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '我的收藏关注' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of jjjshop_user_favorite
@@ -6349,14 +6349,14 @@ CREATE TABLE `jjjshop_user_visit`  (
                                        `user_id` int UNSIGNED NOT NULL DEFAULT 0 COMMENT '用户id',
                                        `shop_supplier_id` int NOT NULL COMMENT '供应商id',
                                        `product_id` int NOT NULL DEFAULT 0 COMMENT '商品id',
-                                       `content` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '' COMMENT '访问内容',
-                                       `visitcode` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT '' COMMENT '访客id',
+                                       `content` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '访问内容',
+                                       `visitcode` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '访客id',
                                        `app_id` int UNSIGNED NOT NULL DEFAULT 0 COMMENT '程序id',
                                        `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
                                        `update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '修改时间',
                                        PRIMARY KEY (`visit_id`) USING BTREE,
                                        INDEX `idx_visitcode`(`visitcode`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 305 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci COMMENT = '用户访问记录' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 305 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '用户访问记录' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of jjjshop_user_visit

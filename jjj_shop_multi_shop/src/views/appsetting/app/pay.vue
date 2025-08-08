@@ -36,33 +36,28 @@
       </el-form-item>
       <el-form-item label="微信支付验签类型">
         <div>
-          <el-radio v-model="form.wxSignType" :label=0
-          >证书</el-radio
-          >
-          <el-radio v-model="form.wxSignType" :label=1
-          >公钥</el-radio
-          >
+          <el-radio v-model="form.wxSignType" :label="1">公钥</el-radio>
         </div>
       </el-form-item>
-      <el-form-item label="微信证书序列号/公钥ID">
+      <el-form-item label="公钥ID">
         <el-input
           :rows="4"
-          placeholder="微信商户平台-API安全-平台证书/支付公钥-序列号/公钥ID,将序列号/公钥ID的全部内容复制进来"
+          placeholder="微信商户平台-账号中心-API安全-微信支付公钥-公钥ID"
           v-model="form.wechatpaySerial"
           class="max-w460"
         ></el-input>
         <div class="tips">
-          微信商户平台-API安全-V3平台证书-序列号,将序列号的全部内容复制进来
+          微信商户平台-账号中心-API安全-微信支付公钥-公钥ID
         </div>
       </el-form-item>
-      <template v-if="form.wxSignType===1">
+      <template v-if="form.wxSignType === 1">
         <el-form-item label="支付公钥pub_key.pem">
           <el-input
-              type="textarea"
-              :rows="4"
-              v-model="form.pubKeyPem "
-              placeholder="使用文本编辑器打开pub_key.pem文件，将文件的全部内容复制进来"
-              class="max-w460"
+            type="textarea"
+            :rows="4"
+            v-model="form.pubKeyPem"
+            placeholder="使用文本编辑器打开pub_key.pem文件，将文件的全部内容复制进来"
+            class="max-w460"
           ></el-input>
           <div class="tips">
             使用文本编辑器打开pub_key.pem文件，将文件的全部内容复制进来
@@ -117,7 +112,7 @@ export default {
         apikey: "",
         keyPem: "",
         wechatpaySerial: "",
-        wxSignType:0,
+        wxSignType: 1,
         pubKeyPem: "",
       },
       app: {},

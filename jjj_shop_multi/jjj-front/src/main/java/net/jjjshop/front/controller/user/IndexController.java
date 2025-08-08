@@ -54,26 +54,33 @@ public class IndexController extends BaseController {
     @ApiOperation(value = "index", response = String.class)
     public ApiResult<Map<String, Object>> index(Integer appId){
         Map<String, Object> result = new HashMap<>();
-        User user = this.getUser(true);
-        if(appId != null && !appId.equals(user.getAppId())){
-            throw new BusinessException("当前应用不匹配");
-        }
-        result.put("user", user);
-        //供应商用户信息
-        SupplierUser supplierUser = supplierUserService.getOne(new LambdaQueryWrapper<SupplierUser>().eq(SupplierUser::getUserId, user.getUserId()).last("LIMIT 1"));
-        SupplierUserVo userVo = new SupplierUserVo();
-        if(supplierUser != null) {
-            BeanUtils.copyProperties(supplierUser, userVo);
-        }
-        result.put("supplierUser", userVo);
-        result.put("userGrade", userGradeService.getById(user.getGradeId())==null?"":userGradeService.getById(user.getGradeId()).getName());
-        result.put("menus", centerMenuService.getMenus());
+        User user = this.getUser(false);
         // 订单数量
         JSONObject orderCount = new JSONObject();
-        orderCount.put("payment", orderService.getCount(user.getUserId(), "payment"));
-        orderCount.put("delivery", orderService.getCount(user.getUserId(), "delivery"));
-        orderCount.put("received", orderService.getCount(user.getUserId(), "received"));
-        orderCount.put("comment", orderService.getCount(user.getUserId(), "comment"));
+        if(user != null){
+            if(appId != null && !appId.equals(user.getAppId())){
+                throw new BusinessException("当前应用不匹配");
+            }
+            result.put("user", user);
+            result.put("userGrade", userGradeService.getById(user.getGradeId())==null?"":userGradeService.getById(user.getGradeId()).getName());
+            orderCount.put("payment", orderService.getCount(user.getUserId(), "payment"));
+            orderCount.put("delivery", orderService.getCount(user.getUserId(), "delivery"));
+            orderCount.put("received", orderService.getCount(user.getUserId(), "received"));
+            orderCount.put("comment", orderService.getCount(user.getUserId(), "comment"));
+            //供应商用户信息
+            SupplierUser supplierUser = supplierUserService.getOne(new LambdaQueryWrapper<SupplierUser>().eq(SupplierUser::getUserId, user.getUserId()).last("LIMIT 1"));
+            SupplierUserVo userVo = new SupplierUserVo();
+            if(supplierUser != null) {
+                BeanUtils.copyProperties(supplierUser, userVo);
+            }
+            result.put("supplierUser", userVo);
+        }else {
+            result.put("user", new User());
+            result.put("userGrade", "");
+            result.put("supplierUser", new SupplierUserVo());
+        }
+
+        result.put("menus", centerMenuService.getMenus());
         result.put("orderCount", orderCount);
         // 获取手机号
         result.put("getPhone", false);
@@ -92,7 +99,7 @@ public class IndexController extends BaseController {
         setting.put("supplierImage", supplierImage);
         setting.put("balanceOpen", balanceOpen);
         result.put("setting", setting);
-        //todo 获取消息条数
+        //获取消息条数
         return ApiResult.ok(result);
     }
 

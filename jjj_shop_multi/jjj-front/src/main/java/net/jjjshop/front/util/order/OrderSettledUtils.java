@@ -540,7 +540,7 @@ public class OrderSettledUtils {
             }else{
                 UserGrade grade = userGradeService.getById(user.getGradeId());
                 // 折扣比例
-                discountRatio = BigDecimal.valueOf(grade.getEquity() * 0.01);
+                discountRatio = BigDecimal.valueOf(grade.getEquity() * 0.01).setScale(2, RoundingMode.DOWN);
             }
             BigDecimal gradeTotalPrice = null;
             BigDecimal gradeProductPrice = null;
@@ -554,7 +554,7 @@ public class OrderSettledUtils {
                     if(gradeTotalPrice.compareTo(BigDecimal.ZERO) < 0){
                         gradeTotalPrice = BigDecimal.ZERO;
                     }
-                    gradeProductPrice = product.getTotalPrice().multiply(discountRatio);
+                    gradeProductPrice = product.getProductPrice().multiply(discountRatio);
                 }
                 product.setIsUserGrade(true);
                 product.setGradeRatio(discountRatio);

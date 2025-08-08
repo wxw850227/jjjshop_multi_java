@@ -50,6 +50,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -166,7 +167,7 @@ public class ProductServiceImpl extends BaseServiceImpl<ProductMapper, Product> 
             }
         } else {
             // 折扣比例
-            discountRatio = new BigDecimal(grade.getEquity()).divide(new BigDecimal(100));
+            discountRatio = new BigDecimal(grade.getEquity()).divide(new BigDecimal(100),2, RoundingMode.DOWN);
         }
         if (discountRatio.compareTo(BigDecimal.ONE) < 0) {
             // 标记参与会员折扣
@@ -228,7 +229,7 @@ public class ProductServiceImpl extends BaseServiceImpl<ProductMapper, Product> 
             }
         } else {
             // 折扣比例
-            discountRatio = new BigDecimal(grade.getEquity()).divide(new BigDecimal(100));
+            discountRatio = new BigDecimal(grade.getEquity()).divide(new BigDecimal(100),2, RoundingMode.DOWN);
         }
         if (discountRatio.compareTo(BigDecimal.ONE) < 0) {
             // 标记参与会员折扣
